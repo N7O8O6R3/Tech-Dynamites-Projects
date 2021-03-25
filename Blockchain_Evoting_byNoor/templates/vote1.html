@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+    <head>
+        <title>Voter Page</title>
+        
+    </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/login_style.css">
+    <body>
+        <div id="header">
+            <div id="img">
+                <img src="static/img/logo.png" alt="logo">
+            </div>
+            <div id="title">
+                <span>E-VOTING</span>
+            </div>
+            <div id="nav">
+                <div class="home">
+                    <a href="/">Home</a>
+                </div>
+                <div class="home" >
+                    <a href="#">{{ user }}</a>
+                </div>
+                <div class="home">
+                    <a href="/" >Logout</a>
+                </div>
+            </div>
+        </div>
+        <div id="mainbody">
+            <div id="can_table">
+                <table>
+                    <tr>
+                        <th>S.No</th><th>Candidate Name</th><th>Symbol</th><th>Vote</th>
+                    </tr>
+                    <tr>
+                        <td>1</td><td>CSE</td>
+                        <td><img src="static/img/cse.png" alt="symbol" height="90" width="130"></td>
+                        <td class="butt"><button onclick="document.getElementById('id01').style.display='block'">Vote</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td><td>ECE </td>
+                        <td><img src="static/img/ece.png" alt="symbol"  height="90" width="130"></td>
+                        <td class="butt"><button onclick="document.getElementById('id02').style.display='block'">Vote</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td><td>MECH</td>
+                        <td><img src="static/img/mech.png" alt="symbol"  height="90" width="130"></td>
+                        <td class="butt"><button onclick="document.getElementById('id03').style.display='block'">Vote</button></td>
+                    </tr>
+                    <tr>
+                        <td>4</td><td>CIVIL</td>
+                        <td><img src="static/img/civil.png" alt="symbol" height="90" width="130"></td>
+                        <td class="butt"><button onclick="document.getElementById('id04').style.display='block'">Vote</button></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                </table>
+            </div>
+        </div>
+        <div id="footer">
+            <span>&copy; Copyrights-2020</span>
+            <div id="f1">
+                <ul>
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-google"></a></li>
+                    <li><a href="#" class="fa fa-linkedin"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="id01" class="modal">
+  
+            <form class="modal-content animate" action="/log" method="post" name ="branch" value = "CSE" >
+                <span class="headlogin"><center>CSE</center></span><br>
+                <div class="container">
+                    <div>
+                        <div class="descrp">
+                            <p>Computer Science and Engineering .</p>
+                        </div>
+                        <div class="symb">
+                            <img src="static/img/cse.png" alt="symbol" height="130" width="130">
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit">Vote</button>
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    </div>
+                </div>
+            </form>
+          </div>
+          <div id="id02" class="modal">
+  
+            <form class="modal-content animate" action="/log" method="post" name = 'branch' value = "ECE">
+                <span class="headlogin"><center>ECE</center></span><br>
+                <div class="container">
+                    <div>
+                        <div class="descrp">
+                            <p>Electronics and Communication Engineering</p>
+                        </div>
+                        <div class="symb">
+                            <img src="static/img/ece.png" alt="symbol" height="130" width="130">
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit">Vote</button>
+                        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+                    </div>
+                </div>
+            </form>
+          </div>
+          <div id="id03" class="modal">
+  
+            <form class="modal-content animate" action="/log" method="post" name = "branch" value = "MECH">
+                <span class="headlogin"><center>MECH</center></span><br>
+                <div class="container">
+                    <div>
+                        <div class="descrp">
+                            <p>Mechanical Engineering</p>
+                        </div>
+                        <div class="symb">
+                            <img src="static/img/mech.png" alt="symbol" height="130" width="130">
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit">Vote></button>
+                        <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
+                    </div>
+                </div>
+            </form>
+          </div>
+          <div id="id04" class="modal">
+  
+            <form class="modal-content animate" action="/log" method="post" name = "branch" value = "CIVIL">
+                <span class="headlogin"><center>CIVIL</center></span><br>
+                <div class="container">
+                    <div>
+                        <div class="descrp">
+                            <p>CIVIL Engineering</p>
+                        </div>
+                        <div class="symb">
+                            <img src="static/img/civil.png" alt="symbol" height="130" width="130">
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit">Vote</button>
+                        <button type="button" onclick="document.getElementById('id04').style.display='none'" class="cancelbtn">Cancel</button>
+                    </div>
+                </div>
+            </form>
+          </div>
+    </body>
+</html>

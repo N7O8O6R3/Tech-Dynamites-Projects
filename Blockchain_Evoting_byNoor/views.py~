@@ -1,0 +1,153 @@
+import datetime
+import json
+
+import requests
+from flask import render_template, redirect, request
+
+from app import app
+
+# The node with which our application interacts, there can be multiple
+# such nodes as well.
+CONNECTED_NODE_ADDRESS = "http://127.0.0.1:8000"
+app.secret_key = 'secret'
+
+clear = 0
+voterID=[0,0,0]
+
+l1=['n170683@rguktn.ac.in']
+#idno =1
+#user_data={'123456789012': ['Noor','1234', 'Organizer', 'male', '2002-02-20', 'n170683@rguktn.ac.in', 1]}
+user_data={'123456789012': ['Noor', '1234', 'Organizer', 'male', '2002-02-20', 'n170683@rguktn.ac.in', 1], '234567890123': ['Hasan', '1234', 'Voter', 'male', '1987-07-15', '1235@gmail.com', 2], '345678901234': ['Shaik', '1234', 'Voter', 'male', '1965-08-04', '12356@gmail.com', 3], '456789012345': ['Hasan Shaik', '1234', 'Voter', 'male', '1988-07-01', '2344@gmail.com', 4]}
+posts = []
+
+def fetch_posts():
+    """
+    Function to fetch the chain from a blockchain node, parse the
+    data and store it locally.
+    """
+    get_chain_address = "{}/chain".format(CONNECTED_NODE_ADDRESS)
+    response = requests.get(get_chain_address)
+    if response.status_code == 200:
+        content = []
+        chain = json.loads(response.content)
+        for block in chain["chain"]:
+            for tx in block["transactions"]:
+                tx["index"] = block["index"]
+                tx["hash"] = block["previous_hash"]
+                content.append(tx)
+
+        global posts
+        posts = sorted(content, key=lambda k: k['timestamp'],
+                       reverse=True)
+@app.route('/')
+def index():
+	if 'logged_in' in session:
+		return render_template('vote.html')
+	else:
+		return render_template('index.html')
+		
+@app.route('/register',methods=['GET','POST'])
+def register():
+	if request.method == 'GET':
+		return render_template('register1.html')
+	else:
+		l=[]
+		adhar = request.form['adhar']
+		Type = request.form['RegType']
+		name = request.form['user_name']
+		gend = request.form['gend']
+		bday = request.form['birthday']
+		mail = request.form['user_email']
+		passw = request.form['user_pass']
+		l.extend([name,passw,Type,gend,bday,mail,len(user_data)+1])
+		age=calculateAge(datetime.date(int(bday[0:4]),int(bday[5:7]),int(bday[8:10])))
+		print(user_data)
+		if adhar in user_data:
+			return render_template('register1.html',error="The Adhar Number already registered")
+		elif mail in l1:
+			return render_template('register1.html',error="The Email already in Use")
+		elif age<18:
+			return render_template('register1.html',error="Your age is not eligible to vote")
+		else:
+			user_data[adhar]=l
+			print(user_data)
+			return render_template('register.html')
+@app.route('/login',methods=['GET','POST'])
+def login():
+	if request.method == 'GET':
+		return render_template('login1.html')	
+	else:
+		Type = request.form['logType']
+		name = request.form['user_name']
+		adhar = request.form['adhar']
+		passw = request.form['user_pass']
+		if adhar in user_data:
+			valid = user_data[adhar]
+			print(Type,name,adhar,passw)
+			if passw == valid[1] and Type==valid[2] and name == valid[0]:
+				if Type == 'Organizer':
+					print("Organizer logged in")
+					session['logged_in'] = True
+					return redirect(url_for('get_result'))
+				else:
+					userId = adhar
+					session['logged_in'] = True
+					print("------------>",user_data,userId)
+					#Redirect(userId)
+					voterID[0]=userId
+					voterID[1]=name
+					voterID[2]=adhar
+					flash('Logged in Successfully')
+					return redirect(url_for('vote',user=userId))
+			else:
+				#print("Invalid Username")
+				return render_template('login1.html',error= "Invalid Username or Password")
+		else:	
+			#print("No records found")
+			#flash("No records found")
+			return render_template('login1.html',error = "No records found")
+		
+@app.route('/logout',methods=['GET','POST'])
+def logout():
+	session.pop('logged_in',None)
+	return redirect(url_for('home'))
+	
+@app.route('/vote',methods=['GET','POST'])
+def vote():
+	if request.method == 'GET':
+		return render_template('vote.html',user=voterID[1])
+	else:
+		candidate= request.form['optradio']
+		voterId = voterID[0]
+		print(candidate)
+		if not voterId or not candidate:
+			return render_template('success.html',flag=0,user=voterID[1])
+		
+		post_object = {
+        'voter':voterID[2] ,
+        'candidate': candidate,
+    }
+			
+		new_tx_address = "{}/new_transaction".format(CONNECTED_NODE_ADDRESS)
+		l=requests.post(new_tx_address,
+                  json=post_object,
+                  headers={'Content-type': 'application/json'})
+		if l==0:
+			return render_template('success.html',flag=0,user=voterId)
+		else:
+			return render_template('success.html',flag=1,candidateId = candidate,user=voterId),200
+			
+@app.route('/admin',methods = ['GET','POST'])
+#@loginrequired
+def get_result():
+	get_chain_address1 = "{}/get_result".format(CONNECTED_NODE_ADDRESS)
+	response = requests.get(get_chain_address1)
+	finalResult = response
+	pri
+	if 'logged_in' not in session:
+		return redirect(url_for('login'))
+	else:
+		return render_template('admin.html',data = finalResult,flag =1)
+		
+def timestamp_to_string(epoch_time):
+    return datetime.datetime.fromtimestamp(epoch_time).strftime('%H:%M')

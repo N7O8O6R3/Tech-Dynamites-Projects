@@ -1,0 +1,98 @@
+import datetime
+import json
+import hashlib
+
+from flask import Flask, jsonify, request, redirect, url_for, render_template
+import requests
+from uuid import uuid4
+from urllib.parse import urlparse
+
+chain =[]
+
+class Blockchain:
+	def __init__(self):
+		self.chain = []
+		self.__id = (1,2,3,4,5,6,7,8,9,10)
+		self.__idDone =[]
+		self.candidate=('CSE','ECE','MECH','CIVIL')
+		self.__countVote = {}
+		self.VotingTrans =[]
+		self.user_data={'123456789012': ['Noor', '1234', 'Organizer', 'male', '2002-02-20', 'n170683@rguktn.ac.in', 1], '234567890123': ['Hasan', '1234', 'Voter', 'male', '1987-07-15', '1235@gmail.com', 2], '345678901234': ['Shaik', '1234', 'Voter', 'male', '1965-08-04', '12356@gmail.com', 3], '456789012345': ['Hasan Shaik', '1234', 'Voter', 'male', '1988-07-01', '2344@gmail.com', 4]}
+		self.nodes =set()
+		for i in range(len(self.candidate)):
+			self.__countVote.update({self.candidate[i]:0})
+	def create_block(self,proof,previous_hash,voter,candidate,timestamp):
+		if voter not in self.__idDone and candidate in self.candidate: 
+			if len(chain)==0:
+				block={'index':len(chain)+1,
+					'timestamp':timestamp,
+					'proof':1,
+					'previous_hash': 0,
+					'voter':voter,
+					'candidate':candidate}
+				chain.append(block)
+			else:
+				block={'index':len(chain)+1,
+					'timestamp':timestamp,
+					'proof':proof,
+					'previous_hash': previous_hash,
+					'voter':voter,
+					'candidate':candidate}
+				chain.append(block)
+			self.__idDone.append(voter)
+			self.__countVote[candidate]+=1
+			return block
+		else:
+			return None          
+	
+	def register_voter(self,adhar,data):
+		user_data[adhar]=data
+		return True
+						
+	def get_previous_block(self):
+		try:
+			return chain[-1]
+		except:
+			return 0
+	def give_chain(self):
+		return chain
+	
+	def need(self):
+		return self.nodes
+	def proof_of_work(self,previous_proof):
+		new_proof =1
+		check_proof = False
+		while check_proof is False:
+			hash_operation = hashlib.sha256(str(new_proof ** 2 - previous_proof ** 2).encode()).hexdigest()
+			if hash_operation[:4]=='0000':
+				check_proof = True
+			else:
+				new_proof += 1
+		return new_proof
+	def hash(self,block):
+		encode_block = json.dumps(block,sort_keys = True).encode()
+		return hashlib.sha256(encode_block).hexdigest()
+	
+	def add_transaction(self,voter,candidate):
+		if voter not in self.__idDone and candidate in self.candidate:
+			self.VotingTrans.append(
+				{'voter':voter,
+				 'candidate':candidate
+				 })
+			self.__idDone.append(voter)
+			self.__countVote[candidate]+=1
+			previous_block = self.get_previous_block()
+		else:
+			return None
+	def get_result(self):
+		return self.__countVote
+			
+	def create_node(self,address):
+		self.nodes.add(address)
+		return True
+
+
+			
+			
+			
+			
