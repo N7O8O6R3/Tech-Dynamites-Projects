@@ -1,3 +1,5 @@
+#Noor Hasan Shaik
+
 This code is recognize the multiple faces from a picture and mark them attendance
 
 To run this 
