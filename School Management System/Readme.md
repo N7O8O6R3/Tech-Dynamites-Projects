@@ -4,4 +4,8 @@ This is a School Management System
 
 To run this,
 
-  python3 main.py
+    pip3 install python3-tk
+    
+    pip3 install sqlite3
+    
+    python3 main.py
