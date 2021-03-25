@@ -1,4 +1,4 @@
-#Noor Hasan Shaik
+#Created by : Noor Hasan Shaik
 
 This code is recognize the multiple faces from a picture and mark them attendance
 
