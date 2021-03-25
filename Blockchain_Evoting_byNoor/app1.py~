@@ -1,0 +1,30 @@
+from flask import Flask,render_template,redirect,url_for,request
+
+app = Flask(__name__)
+
+@app.route('/',methods = ['GET','POST'])
+def index():
+	return render_template('index.html')
+@app.route('/register',methods = ['GET','POST'])
+def register():
+	return render_template('register1.html')
+@app.route('/register/completed',methods=['GET','POST'])
+def reg():
+	return render_template('register.html')
+@app.route('/login',methods=['GET','POST'])
+def login():
+	return render_template('login1.html')
+@app.route('/vote',methods=['GET','POST'])
+def vote():
+	if request.method == 'POST':
+		return render_template('vote1.html',user='Noor')
+	else:
+		voter = request.form['User']
+		print(voter)
+@app.route('/log',methods =['GET','POST'])
+def log():
+	return redirect(url_for('vote'))
+	
+if __name__ == '__main__':
+	app.debug=True
+	app.run(host='127.0.0.1',port=5000)

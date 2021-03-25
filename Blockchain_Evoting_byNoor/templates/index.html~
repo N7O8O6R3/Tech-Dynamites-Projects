@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>E-voting</title>
+    </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+    <link rel="stylesheet" href="static/css/style.css">
+   <!-- <link rel="stylesheet" href="vote.js">-->
+    <body>
+        <div id="head">
+             <div id="head1">
+                 <img src="static/img/logo.png" alt="logo">
+             </div>
+             <div id="hnam">
+                  E-voting
+             </div>
+             <div id="hnav">
+                 <div class="navi">
+                     <span><a href="#">Home</a></span>
+                 </div>
+                  <div class="navi">
+                     <span> <a href="/register">Register</a></span>
+                
+                 </div>
+                 <div class="navi" >
+                     <span> <a href='/login' onclick="document.getElementById('id01').display='block'"  style="width:auto;">Login</a></span>
+                     </div>
+                 <form class="navi" >
+                     
+                     <a onclick="myFunction()">Result</a>
+
+					<script>
+					function myFunction() {
+					  alert("Results Will be anounced Later!");
+					}
+					</script>
+                 </form>
+             </div>
+        </div>
+        <div id="slide1">
+            <img class="myslides" src="static/img/slide1.png" alt="slde1">
+            <img class="myslides" src="static/img/slide2.png" alt="slide2">
+            <img class="myslides" src="static/img/slide3.png" alt="slide3">
+            <img class="myslides" src="static/img/slide4.png" alt="slide4">
+        </div>
+        <div id="abvid">
+            <div id="about">
+                <span>About</span>
+                <br>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Electronic Voting technology can speed the counting of ballots, 
+                    reduce the cost of paying staff to count votes manually and can provide improved 
+                    accessibility for disabled voters. 
+                    Blockchain technology is an incorruptible digital ledger of economic transactions that can
+                     be programmed to record not just financial transactions but virtually everything of value.
+                </p>
+            </div>
+            <div id="video">
+                    <video src="static/img/video.mp4" controls autoplay> </video>
+            </div>
+        </div>
+        <div id="foot">
+            <span>&copy; copyrights-2020</span>
+            <div id="f1">
+                <ul>
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-google"></a></li>
+                    <li><a href="#" class="fa fa-linkedin"></a></li>
+                </ul>
+            </div>
+         </div>
+         <script>
+            var myIndex=0;
+            carousel();
+            function carousel()
+            {
+                var i;
+                var x=document.getElementsByClassName("myslides");
+                for(i=0;i<x.length;i++)
+                {
+                    x[i].style.display="none";
+                }
+                myIndex++;
+                if(myIndex>x.length)
+                {
+                    myIndex=1;
+                }
+                x[myIndex-1].style.display="block";
+                setTimeout(carousel,4000);
+            }
+            var z=document.getElementById('mess1').innerHTML;
+	    alert(z);
+        </script>          
+    </body>
+</html>

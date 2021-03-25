@@ -1,0 +1,137 @@
+<html>
+    <head>
+        <title>E-voting</title>
+    </head>
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+    <link rel="stylesheet" href="static/css/style.css">
+   <!-- <link rel="stylesheet" href="vote.js">-->
+    <body>
+        <div id="head">
+             <div id="head1">
+                 <img src="static/img/logo.png" alt="logo">
+             </div>
+             <div id="hnam">
+                  E-voting
+             </div>
+             <div id="hnav">
+                 <div class="dropdown">
+                     <span>Home</span>
+                 </div>
+                  <div class="dropdown">
+                     <span> Register</span>
+                
+                 </div>
+                 <div class="dropdown">
+                     <span> Login</span>
+                 </div>
+             </div>
+        </div>
+        <div id="slide1">
+            <img class="myslides" src="static/img/slide1.png" alt="slde1">
+            <img class="myslides" src="static/img/slide2.png" alt="slide2">
+            <img class="myslides" src="static/img/slide3.png" alt="slide3">
+            <img class="myslides" src="static/img/slide4.png" alt="slide4">
+        </div>
+        <div id="abvid">
+            <div id="about">
+                <span>About</span>
+                <br>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Electronic Voting technology can speed the counting of ballots, 
+                    reduce the cost of paying staff to count votes manually and can provide improved 
+                    accessibility for disabled voters. 
+                    Blockchain technology is an incorruptible digital ledger of economic transactions that can
+                     be programmed to record not just financial transactions but virtually everything of value.
+                </p>
+            </div>
+            <div id="video">
+                    <video src="static/img/video.mp4" controls autoplay> </video>
+            </div>
+        </div>
+        <div id="foot">
+            <span>&copy; copyrights-2020</span>
+            <div id="f1">
+                <ul>
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-google"></a></li>
+                    <li><a href="#" class="fa fa-linkedin"></a></li>
+                </ul>
+            </div>
+         </div>
+         <div id="id01" class="modal">
+  			<!-- {% with messages = get_flashed_messages() %}
+				{% if messages %}
+				    <div class="notification is-danger">
+				        {{ messages[0] }}. Go to <a href="{{ url_for('login') }}">login page</a>.
+				    </div>
+				{% endif %}
+			{% endwith %}-->
+            <form class="modal-content animate"  method="post">
+              
+                <span class="headlogin"><center>Login</center></span><br>
+                
+              <div class="container">
+              <label for="regist"><b>Login-type:</b></label><br>
+		<select id="regist" name="logType" >
+			<option value="choose">choose</option>
+			<option value="Voter">Voter</option>
+			<option value="Organizer">Organizer</option>
+			
+		</select><br><br>
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" id="uname" name="user_name" required>
+          		
+          		<label for="uname"><b>Adhar Number:</b></label>
+                <input type="text" minlength = "12" maxlength = "12" placeholder="Enter Adhar Number" id="uname" name="adhar" required>
+                
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="psw" name="user_pass" required>
+                  
+                 </div> 
+                 <!-- <% if (locals.login_errors) { 
+                      login_errors.forEach(function(error_msg){ %>
+                      <div class="alert alert-danger" id="mess1" role="alert"><%= error_msg %></div>
+                    <% });
+                    } %>-->
+                <button type="submit">Login</button>
+                <label>
+                  <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+              
+          
+              <div class="container" style="background-color:#f1f1f1">
+                <a href="/"><button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button></a>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+              </div>
+            </form>
+            {% if error %}
+        		<p class="alert alert-danger" id="mess1" role="alert"> {{ error }}
+      		{% endif %}
+
+          </div>
+          <script>
+            var myIndex=0;
+            carousel();
+            function carousel()
+            {
+                var i;
+                var x=document.getElementsByClassName("myslides");
+                for(i=0;i<x.length;i++)
+                {
+                    x[i].style.display="none";
+                }
+                myIndex++;
+                if(myIndex>x.length)
+                {
+                    myIndex=1;
+                }
+                x[myIndex-1].style.display="block";
+                setTimeout(carousel,4000);
+            }
+            var z=document.getElementById('mess1').innerHTML;
+	    alert(z);
+        </script>          
+    </body>
+</html>
