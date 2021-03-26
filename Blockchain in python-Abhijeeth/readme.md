@@ -1,20 +1,20 @@
-This is online voting project implemented using Blockchain Tech.
+This is online voting project implemented using Blockchain Tech.\n
 
-The components used are.
-Flask for backend
-Ganache for virtual ethereum network
-remix-ide for solidity compiler and deploying the smart contract into blockchain.
-Web3.py is being used in the project for conducting transactions through python.
-python to make this all.
+The components used are.\n
+Flask for backend\n
+Ganache for virtual ethereum network\n
+remix-ide for solidity compiler and deploying the smart contract into blockchain.\n
+Web3.py is being used in the project for conducting transactions through python.\n
+python to make this all.\n
  
-Requirement:
-flask
-web3.py
-ganache application
-remix-ide or any compiler
+Requirement:\n
+flask\n
+web3.py\n
+ganache application\n
+remix-ide or any compiler\n
 
-To run:
-in CMD go to the folder and
-python app.py
+To run:\n
+in CMD go to the folder and\n
+python app.py\n
 
-the browse for 127.0.0.1:5000
+the browse for 127.0.0.1:5000\n
