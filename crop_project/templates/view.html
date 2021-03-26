@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <section class="text-gray-400 bg-gray-900 body-font overflow-hidden">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="lg:w-4/5 mx-auto flex flex-wrap">
+                <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+                    <h2 class="text-sm title-font text-gray-500 tracking-widest">The Crop predictor</h2>
+                    <h1 class="text-white text-3xl title-font font-medium mb-4">This tool gives you the best mach for your soil</h1>
+                    <div class="flex border-t border-gray-800 py-2">
+                        <div class="relative mb-4">
+                            <form method="post">
+                                <label for="full-name" class="leading-7 text-sm text-gray-400">Nitrogen Content(N)</label>
+                                <input type="text" id="nitrogen" name="nitrogen" class=" w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-green-900 rounded border border-gray-600 focus:border-green-500 text-base outline-none text-gray-100 py-1 px-3 leading-8transition-colors duration-200 ease-in-out ">
+                                <label for="full-name " class="leading-7 text-sm text-gray-400 ">Phosporous Content(P)</label>
+                                <input type="text" id="phosporous" name="phosporous" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-green-900 rounded border border-gray-600 focus:border-green-500 text-base outline-nonetext-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ">
+                                <label for="full-name " class="leading-7 text-sm text-gray-400 ">pottasium Content(K)</label>
+                                <input type="text " id="full-name " name="pottasium" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-green-900 rounded border border-gray-600 focus:border-green-500 text-base outline-none
+                                         text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ">
+                                <label for="full-name " class="leading-7 text-sm text-gray-400 ">Temprature</label>
+                                <input type="text " id="full-name " name="temp" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-green-900 rounded border border-gray-600 focus:border-green-500 text-base outline-none
+                                         text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ">
+                                <label for="full-name " class="leading-7 text-sm text-gray-400 ">Humidity</label>
+                                <input type="text " id="full-name " name="humidity" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-green-900 rounded border border-gray-600 focus:border-green-500 text-base outline-none
+                                         text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ">
+                                <label for="full-name " class="leading-7 text-sm text-gray-400 ">PH</label>
+                                <input type="text " id="full-name " name="ph" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-green-900 rounded border border-gray-600 focus:border-green-500 text-base outline-none
+                                         text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ">
+                                <label for="full-name " class="leading-7 text-sm text-gray-400 ">Rain-Fall</label>
+                                <input type="text " id="full-name " name="rain" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-green-900 rounded border border-gray-600 focus:border-green-500 text-base outline-none
+                                         text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ">
+
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <button class="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">Button</button>
+                        <button class="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                  </svg>
+                </button>
+                        <h1>{{result}}</h1>
+                    </div>
+                </div>
+                </form>
+                <img alt={{pic}} class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={{pic}}>
+                <h1>
+                    {{pic}}
+                </h1>
+            </div>
+        </div>
+
+    </section>
+
+
+
+</body>
+
+</html>
