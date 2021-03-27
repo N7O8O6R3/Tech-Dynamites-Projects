@@ -154,11 +154,8 @@ class instabott:
             # self.driver.execute_script("""JavascriptExecutor jse = (JavascriptExecutor)driver;
             # jse.executeScript("scroll(0, 500);");""")
 
-#username = input('username')
-#passw=input('passw')
-
-username="cap_abhijeeth"
-passw="8790140291cap."
+username = input('username')
+passw=input('passw')
 
 instabot=instabott(username,passw)
 sleep(3)
