@@ -4,6 +4,8 @@
 
 This is to save the data that you invested. ( THis is for One user with multiple investments. )
 
+Here I used Sqlite3 DataBase.
+
 To run this you need to install tikinter , you can install by using following command
 
     pip3 install python-tk
