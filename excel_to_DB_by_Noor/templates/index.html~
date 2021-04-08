@@ -1,0 +1,36 @@
+<html>
+
+<body>
+      {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                  <script>alert("Successfully uploaded!")</script>
+            {% endif%}
+      {% endwith %}
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" />
+            <input type="submit" value="Submit"/>
+      </form>
+      <form class="form-inline" action="{{ url_for('search') }} " method='post'>
+      <select name= colours >
+    {% for colour in colours %}
+    <option value= "{{colour}}" SELECTED>{{colour}}</option>"
+    
+    {% endfor %}
+    <input type="text" name = "pay">
+    <input type="submit" value="Search" />
+    
+</form>
+</select>
+
+ 
+<form  action="/search " method='post'>
+    {% for list in lists %}
+    	<pre class="tab">{{list}}</pre><br>	
+    {% endfor %}
+</form>
+
+</body>
+
+ 
+
+</html>
